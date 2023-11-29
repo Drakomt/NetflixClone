@@ -66,9 +66,15 @@ export const contentSlice = createSlice({
         state.error = null;
         //state.singleContent = action.payload.singleContent;
         state.content = action.payload.content;
+
+
         const { movies, series } = TypeFilter(action.payload.content);
         state.movies = movies;
         state.series = series;
+
+        // state.movies = action.payload.content;
+        // state.series = action.payload.content;
+
         //console.log("content: ", action.payload.content);
 
         // state.movies = action.payload.movies;

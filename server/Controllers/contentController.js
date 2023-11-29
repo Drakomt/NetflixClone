@@ -22,11 +22,17 @@ export const getFillteredContent = async (req, res) => {
           // { $sample: { size: 10 } },
           { $match: { isSeries: isSeries, genre: genreQuery } },
         ]);
+
+        //content = await Content.find();
+
       } else {
         content = await Content.aggregate([
           // { $sample: { size: 10 } },
           { $match: { isSeries: isSeries } },
         ]);
+
+        //content = await Content.find();
+
       }
     } else {
       content = await Content.find();

@@ -8,6 +8,7 @@ import Error from "../../components/Error/Error";
 import RandomContent from "../../components/RandomContent/RandomContent";
 import List from "../../components/List/List";
 import { GenresFilter } from "../../utils/filter";
+// import { GenresFilter,ShuffledLists } from "../../utils/filter";
 import NavBar from "../../components/NavBar/NavBar";
 
 const HomePage = ({ type }) => {
@@ -76,9 +77,9 @@ const HomePage = ({ type }) => {
     return () => clearInterval(interval);
   }, [content]);
 
-  //console.log("content: ", content);
   const filteredLists = GenresFilter(content, genres);
-  //console.log("filteredLists: ", filteredLists);
+
+  //const shuffledLists= ShuffledLists(content, genres.length);
 
   return (
     <div className="home">
@@ -104,13 +105,7 @@ const HomePage = ({ type }) => {
               title="Favorites"
             />
           )}
-          {/* <List
-            className="list"
-            list={content.filter((item) =>
-              user.favoritesList.includes(item._id)
-            )}
-            title="Favorites"
-          /> */}
+
           {genres &&
             genres.map(
               (genre, i) =>
@@ -123,28 +118,22 @@ const HomePage = ({ type }) => {
                   />
                 )
             )}
+
+            {/* {genres &&
+                  genres.map(
+                    (genre, i) =>
+                    shuffledLists.length > 0 && (
+                        <List
+                          className="list"
+                          list={shuffledLists[i]}
+                          key={i}
+                          title={genre}
+                        />
+                      )
+                  )} */}
         </>
 
-        // Object.keys(filteredLists).map((genre, i) => (
-        //   <List
-        //     className="list"
-        //     list={filteredLists[genre]}
-        //     key={i}
-        //     title={genre}
-        //   />
-        // ))
-        // genres.map(
-        //   (genre, i) =>
-        //     filteredLists[genre].length > 0 && (
-        //       <List
-        //         className="list"
-        //         list={filteredLists[genre]}
-        //         key={i}
-        //         title={genre}
-        //       />
-        //     )
-        // )
-        // <List className="list" list={content} />
+
       )}
     </div>
   );
